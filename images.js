@@ -2,6 +2,18 @@ unvisited = Object.keys(distances)
 current = null
 selected = []
 
+document.addEventListener('keyup', function(event) {
+  if(event.keyCode == 37) { prev() } // left
+  else if(event.keyCode == 39) { next() } // right
+  else if(event.keyCode == 32) {
+    if ( $("#play").attr("onclick") == "stop()" ) { stop() }
+    else { play() }
+    //next()
+  } // space
+  else if(event.keyCode == 13) { reload() } // enter
+  //else { alert(event.keyCode) }
+});
+
 function init() {
   path = location.pathname.replace("/","")
   if (path == '' || path == 'index.html') {
@@ -11,6 +23,7 @@ function init() {
   else { current = path.replace(".html","") }
   select()
   update()
+  play()
 }
 
 function reload() {
@@ -36,10 +49,25 @@ function select() {
     idx = unvisited.indexOf(selected[i])
     unvisited.splice(idx,1)
   }
-  console.log(unvisited.length)
   if (unvisited.length < 8) { unvisited = Object.keys(distances) }
-  console.log(unvisited.length)
 }
+
+function play() {
+  playing = setInterval(function () { next() }, 3000);
+  $("#play-indicator").attr("src", "/icons/stop.svg")
+  $("#play").attr("onclick","stop()")
+  $(".prev").hide()
+  $(".next").hide()
+}
+
+function stop() {
+  clearInterval(playing)
+  $("#play-indicator").attr("src", "/icons/play.svg")
+  $("#play").attr("onclick","play()")
+  $(".prev").show()
+  $(".next").show()
+}
+
 
 function prev() {
   i = (selected.indexOf(current)-1+selected.length) % selected.length // js % cannot handle negative values
