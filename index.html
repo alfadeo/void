@@ -1,21 +1,162 @@
-<html>
-  <head><meta charset="utf-8"/></head>
-  <script src="jquery-3.2.1.min.js"></script>
-  <script src=images/meta.js></script>
-  <script src=images.js></script>
-  <!--
-  <script src='https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10'</script>
-  -->
+<html5>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/> </head>
 
-  <body bgcolor='black' text='white' style='text-align:left'/>
-    <div id="fb-root"></div>
-    <script>
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
+  <body>
+
+    <style>
+      body {
+        width: 100%;
+        height:100vh;
+        text-align:center;
+        margin-top: 3em;
+        margin-left: 0;
+        background-color: white ;
+        color: black;
+      }
+
+      #main {
+        width: 100%;
+        height: 80%;
+      }
+
+      #slideshow {
+        position: relative;
+        text-align:center;
+      }
+
+      #img-container {
+        display: inline-block;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 80vh;
+        display: inline-block;
+      }
+
+      .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        width: auto;
+        color: lightgrey;
+        font-weight: bold;
+        font-size: 5em;
+        transition: 0.5s ease;
+        display: inline-block;
+      }
+
+      .prev { left: 0; }
+      .next { right: 0; }
+      .prev:hover, .next:hover { text-decoration: none; }
+      .prev:active, .next:active { color: black; }
+
+      #copyright {
+        float: right;
+        display: inline-block;
+      }
+
+      a:link, a:visited {
+        color: black;
+        text-decoration: none;
+      }
+      a:hover { text-decoration: underline; }
+
+      .share { display: inline-block; }
+
+      #reload {
+        display: inline-block;
+        //width: 15em;
+        //text-align:left;
+          //background-color: yellow;
+      }
+
+      #play {
+        display: inline-block;
+        vertical-align: top;
+          //background-color: red;
+            //color: blue;
+      }
+      #play:link {
+        color: red;
+          text-align: center;
+      }
+
+      #controller {
+        text-align: center;
+        vertical-align: top;
+          //background-color: green;
+      }
+
+      #footer {
+        text-align: center;
+        vertical-align: top;
+      }
+
+      #download {
+          height: 0.5em;
+          width: 1.5em;
+      }
+
+      #mail {
+          height: 0.5em;
+          width: 1.5em;
+      }
+
+		</style>
+
+    <div id="main">
+      <div id="slideshow">
+        <div id="img-container">
+          <img id="image"/>
+          <div id="caption">
+            <div id="copyright">
+              &copy; <a href="mailto:void@alfadeo.de">void@alfadeo.de</a>  
+              <a rel='license' href='http://creativecommons.org/licenses/by-sa/4.0/'><img alt='Creative Commons License' style='border-width:0' src='/icons/cc.svg' /></a>
+            </div>
+          </div>
+        </div>
+        <a class="prev" onclick="prev()">&#10094;</a>
+        <a class="next" onclick="next()">&#10095;</a>
+      </div>
+    </div>
+
+    <p/>
+
+    <div id="footer">
+      <a class="share" id="buy"><img src='/icons/cart.svg'></a>
+      <a class="share" id="download" ><img src="/icons/download.svg"  alt='download'/></a>
+      <a class="share" id="mail"><img src='/icons/mail.svg'></a>
+      <div class='share fb-like' data-layout='button' data-action='like' data-size='small' data-show-faces='false' data-share='true'></div>
+      <a class="share twitter-share-button" href='https://twitter.com/share?ref_src=twsrc%5Etfw' class='twitter-share-button' data-show-count='false'></a>
+      <g:plusone></g:plusone>
+      <a class="share tumblr-share-button" data-color='blue' data-notes='none' href='https://embed.tumblr.com/share'></a>
+      <a class="share" href='https://www.pinterest.com/pin/create/button/' data-pin-do='buttonBookmark'> </a>
+    </div>
+
+    <div id="controller">
+    <a class ="share" id="reload" onclick="reload()"><img src='/icons/reload.svg'></a>
+    <a class="share" id="play" onclick="play()">&#10095;&#10095;</a>
+    </div>
+ 
+  <script src="jquery-3.2.1.min.js"></script>
+  <script src="images/meta.js"></script>
+  <script src="images.js"></script>
+  <div id="fb-root"></div>
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <script async src='//platform.twitter.com/widgets.js' charset='utf-8'></script>
+  <script type='text/javascript' async defer src='//assets.pinterest.com/js/pinit.js'></script>
+  <script>!function(d,s,id){var js,ajs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://assets.tumblr.com/share-button.js';ajs.parentNode.insertBefore(js,ajs);}}(document, 'script', 'tumblr-js');</script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </body>
 </html>
