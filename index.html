@@ -68,7 +68,7 @@
         display: inline-block;
       }
 
-      #reload {
+      .controller-item {
         display: inline-block;
         cursor: pointer;
           width: 4em;
@@ -132,8 +132,9 @@
     </div>
 
     <div id="controller">
-      <a id="reload" onclick="reload()"><img src='/icons/reload.svg'></a>
-      <a id="play" onclick="play()"><img id="play-indicator" src='/icons/stop.svg'></a>
+      <a class="controller-item" id="info" href="/info.html"><img src='/icons/info.svg'></a>
+      <a class="controller-item" id="reload" onclick="reload()"><img src='/icons/reload.svg'></a>
+      <a class="controller-item" id="play" onclick="play()"><img id="play-indicator" src='/icons/stop.svg'></a>
     </div>
  
     <script src="jquery-3.2.1.min.js"></script>
