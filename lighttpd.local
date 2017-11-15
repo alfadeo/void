@@ -1,6 +1,6 @@
 server.port = 8080
-#server.document-root = "/home/ch/src/void"
-server.document-root = "/www"
+server.document-root = "/home/ch/src/void"
+#server.document-root = "/www"
 server.modules = ( "mod_rewrite" )
 mimetype.assign = (
   ".html" => "text/html", 
