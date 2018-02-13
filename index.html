@@ -1,68 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>   
-    <title>void</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>void</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
   <body>
 
-    <div id="main">
-      <div id="slideshow">
-        <div id="img-container">
-
-          <img id="image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="image"/>
-
-          <div id="caption">
-
-            <div id="social">
-              <!-- <a class="share" id="buy"><img src='/icons/cart.svg'></a> -->
-              <a class="share" id="download" ><img src="/icons/download.svg"  alt='download'/></a>
-              <a class="share" id="mail"><img src='/icons/mail.svg' alt="mail"></a>
-              <div class='share fb-like' data-layout='button' data-action='like' data-size='small' data-show-faces='false' data-share='true'></div>
-              <a class="share twitter-share-button" href='https://twitter.com/share?ref_src=twsrc%5Etfw' data-show-count='false'></a>
-              <div class="g-plusone" data-size="medium"></div>
-              <a class="share tumblr-share-button" data-color='blue' data-notes='none' href='https://embed.tumblr.com/share'></a>
-              <a class="share" href='https://www.pinterest.com/pin/create/button/' data-pin-do='buttonBookmark'> </a>
-            </div>
-
-            <div id="copyright">
-              &copy; <a href="mailto:void@alfadeo.de">void@alfadeo.de</a>  
-              <a rel='license' href='http://creativecommons.org/licenses/by-sa/4.0/'><img alt='Creative Commons License' style='border-width:0' src='/icons/cc.svg' /></a>
-            </div>
-
-          </div>
-        </div>
-        <a class="prev" onclick="prev()">&#10094;</a>
-        <a class="next" onclick="next()">&#10095;</a>
-      </div>
-    </div>
+    <img id="image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="image"/>
 
     <div id="controller">
-      <a class="controller-item" id="info" href="/info.html"><img src='/icons/info.svg' alt="info"/></a>
-      <a class="controller-item" id="reload" onclick="reload()"><img src='/icons/reload.svg' alt="reload"/></a>
+      <a class="controller-item" href="/info.html"><img src='/icons/info.svg' alt="info"/></a>
+      <a class="controller-item" onclick="reload()"><img src='/icons/reload.svg' alt="reload"/></a>
       <a class="controller-item" id="play" onclick="play()"><img id="play-indicator" src='/icons/stop.svg' alt="start/stop"/></a>
     </div>
  
+    <a id="prev" onclick="prev()">&#10094;</a>
+    <a id="next" onclick="next()">&#10095;</a>
+
     <script src="jquery-3.2.1.min.js"></script>
     <script src="images/meta.js"></script>
     <script src="images.js"></script>
-    <div id="fb-root"></div>
-    <script>
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <script async src='//platform.twitter.com/widgets.js' charset='utf-8'></script>
-    <script type='text/javascript' async defer src='//assets.pinterest.com/js/pinit.js'></script>
-    <script>!function(d,s,id){var js,ajs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://assets.tumblr.com/share-button.js';ajs.parentNode.insertBefore(js,ajs);}}(document, 'script', 'tumblr-js');</script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
   </body>
 </html>

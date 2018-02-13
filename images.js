@@ -8,10 +8,8 @@ document.addEventListener('keyup', function(event) {
   else if(event.keyCode == 32) {
     if ( $("#play").attr("onclick") == "stop()" ) { stop() }
     else { play() }
-    //next()
   } // space
   else if(event.keyCode == 13) { reload() } // enter
-  //else { alert(event.keyCode) }
 });
 
 function init() {
@@ -56,16 +54,16 @@ function play() {
   playing = setInterval(function () { next() }, 3000);
   $("#play-indicator").attr("src", "/icons/stop.svg")
   $("#play").attr("onclick","stop()")
-  $(".prev").hide()
-  $(".next").hide()
+  $("#prev").hide()
+  $("#next").hide()
 }
 
 function stop() {
   clearInterval(playing)
   $("#play-indicator").attr("src", "/icons/play.svg")
   $("#play").attr("onclick","play()")
-  $(".prev").show()
-  $(".next").show()
+  $("#prev").show()
+  $("#next").show()
 }
 
 
@@ -84,11 +82,11 @@ function next() {
 function update() {
   history.pushState(null, null, current+".html")
   $("#image").attr("src","/images/"+current)
-  $("#download").attr("href","/images/"+current)
-  $("#download").attr("download","/images/"+current)
-  $("#buy").attr("href","mailto:void@alfadeo.de?subject="+current+"&body=Please specify your preferred size:")
-  $("#mail").attr("href","mailto:?subject="+current)
-  $(".fb-like").attr("data-href",window.location.href)
+  //$("#download").attr("href","/images/"+current)
+  //$("#download").attr("download","/images/"+current)
+  //$("#buy").attr("href","mailto:void@alfadeo.de?subject="+current+"&body=Please specify your preferred size:")
+  //$("#mail").attr("href","mailto:?subject="+current)
+  //$(".fb-like").attr("data-href",window.location.href)
 }
 
 $(document).ready( init )
